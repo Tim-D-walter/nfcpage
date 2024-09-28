@@ -3,27 +3,27 @@
 import { useState, useEffect } from 'react';
 
 export default function Home() {
-  const [response, setResponse] = useState<string>(''); // Define state with type
+  let [response, setResponse] = useState<string>(''); // Use `let` for state
 
-  useEffect(() => {
+  useEffect(function() {
     // Adding Google Font dynamically
-    const link = document.createElement('link');
+    let link = document.createElement('link');
     link.href = 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap';
     link.rel = 'stylesheet';
     document.head.appendChild(link);
   }, []);
 
-  const handleYesClick = (): void => {
+  function handleYesClick(): void {
     // Open Instagram in a new window if on mobile
     if (typeof window !== 'undefined') {
       window.open('https://www.instagram.com', '_blank');
     }
-  };
+  }
 
-  const handleNoClick = (): void => {
+  function handleNoClick(): void {
     // Display a message when "No" is clicked
     setResponse('Ah schade, aber einen schönen Tag dir!');
-  };
+  }
 
   return (
       <div style={styles.container}>
@@ -37,8 +37,8 @@ export default function Home() {
   );
 }
 
-// Define the styles object using `as const` for type assertion
-const styles = {
+// Define the styles object (use `var` to avoid `const`)
+var styles = {
   container: {
     display: 'flex',
     flexDirection: 'column',
@@ -76,4 +76,4 @@ const styles = {
     fontSize: '18px',
     fontWeight: '400',
   },
-} as const; // Use `as const` to ensure type inference for the object
+};
