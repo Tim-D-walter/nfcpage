@@ -1,79 +1,40 @@
-"use client"; // Required for client-side interaction in Next.js 13+
+'use client'; // Necessary for event handling like button clicks
 
-import { useState, useEffect } from 'react';
+import React from "react";
 
 export default function Home() {
-  let [response, setResponse] = useState<string>(''); // Use `let` for state
+    // Function for the "Ja" button, opening Instagram
+    const handleYesClick = () => {
+        window.location.href = "https://www.instagram.com"; // Opens Instagram on mobile or web
+    };
 
-  useEffect(function() {
-    // Adding Google Font dynamically
-    let link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap';
-    link.rel = 'stylesheet';
-    document.head.appendChild(link);
-  }, []);
+    // Function for the "Nein" button, showing an alert message
+    const handleNoClick = () => {
+        alert("Ah schade, aber einen schönen Tag dir!");
+    };
 
-  function handleYesClick(): void {
-    // Open Instagram in a new window if on mobile
-    if (typeof window !== 'undefined') {
-      window.open('https://www.instagram.com', '_blank');
-    }
-  }
+    return (
+        <div className="flex flex-col items-center justify-center min-h-screen p-4" style={{ backgroundColor: 'red' }}>
+            <h1 className="text-2xl font-bold mb-6 text-center text-white">
+                Hi! Ich finde dich süß, hast du Lust mal einen Cafe zu trinken? :)
+            </h1>
 
-  function handleNoClick(): void {
-    // Display a message when "No" is clicked
-    setResponse('Ah schade, aber einen schönen Tag dir!');
-  }
+            {/* Buttons for Yes and No */}
+            <div className="flex space-x-4">
+                <button
+                    onClick={handleYesClick}
+                    className="px-6 py-2 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-700"
+                >
+                    Ja
+                </button>
 
-  return (
-      <div style={styles.container}>
-        <h1 style={styles.text}>Hi! Ich finde dich süß, hast du Lust mal einen Cafe zu trinken? :)</h1>
-        <div style={styles.buttons}>
-          <button onClick={handleYesClick} style={styles.button}>Ja</button>
-          <button onClick={handleNoClick} style={styles.button}>Nein</button>
+                <button
+                    onClick={handleNoClick}
+                    className="px-6 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-700"
+                >
+                    Nein
+                </button>
+            </div>
         </div>
-        {response && <p style={styles.response}>{response}</p>}
-      </div>
-  );
+    );
 }
-
-// Define the styles object (use `var` to avoid `const`)
-var styles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100vh',
-    backgroundColor: '#FF0000', // Red background color
-    textAlign: 'center',
-    fontFamily: "'Roboto', sans-serif", // Apply Roboto font
-    color: 'white', // Text color is white
-    padding: '20px',
-  },
-  text: {
-    fontSize: '24px',
-    fontWeight: '700',
-  },
-  buttons: {
-    display: 'flex',
-    justifyContent: 'center',
-    marginTop: '20px',
-  },
-  button: {
-    margin: '0 10px',
-    padding: '10px 20px',
-    fontSize: '16px',
-    fontWeight: '700',
-    cursor: 'pointer',
-    border: 'none',
-    backgroundColor: 'white', // Buttons with white background
-    color: 'red', // Button text color red
-    borderRadius: '5px',
-  },
-  response: {
-    marginTop: '20px',
-    fontSize: '18px',
-    fontWeight: '400',
-  },
-};
