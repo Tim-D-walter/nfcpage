@@ -7,15 +7,32 @@ export default function Home() {
     const [showButtons, setShowButtons] = useState(true);
     const [yesLabel, setYesLabel] = useState("Ja"); // Default to German
     const [noLabel, setNoLabel] = useState("Nein"); // Default to German
+    const [name, setName] = useState(""); // For the user's name
 
     useEffect(() => {
+        // Function to get the name from the URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const nameFromUrl = urlParams.get('name') || urlParams.get('Lidia'); // Accept ?name=Lidia or ?Lidia
+
+        // Check if name already exists in localStorage (this will be the cached first name)
+        const savedName = localStorage.getItem('name');
+
+        // If a name exists in localStorage, use that; otherwise, use the name from the URL
+        if (savedName) {
+            setName(savedName); // Set the cached name
+        } else if (nameFromUrl) {
+            // Save the first name into localStorage and use it
+            localStorage.setItem('name', nameFromUrl);
+            setName(nameFromUrl);
+        }
+
         // Detect the browser's language
         const language = navigator.language || navigator.userLanguage;
 
         // Check if the browser language is German
         if (language.startsWith("de")) {
             setMessage(
-                "Hey na du? :)<br />Ich finde dich echt süß und dachte,<br />vielleicht könnten wir mal zusammen einen Kaffee trinken!<br />" +
+                `Hey ${savedName || nameFromUrl || 'du'}? :)<br />Ich finde dich echt süß und dachte,<br />vielleicht könnten wir mal zusammen einen Kaffee trinken!<br />` +
                 "Diesen Samstag 15 Uhr dann im Café May? :) – Tim"
             );
             setYesLabel("Ja");
@@ -23,7 +40,7 @@ export default function Home() {
         } else {
             // Default to English
             setMessage(
-                "Hey :)<br />I think you're really cute and was wondering,<br />if you'd like to grab a coffee with me!<br />" +
+                `Hey ${savedName || nameFromUrl || 'there'} :)<br />I think you're really cute and was wondering,<br />if you'd like to grab a coffee with me!<br />` +
                 "How about this Saturday at 3 PM at Café May? :) – Tim"
             );
             setYesLabel("Yes");
@@ -48,9 +65,9 @@ export default function Home() {
 
     const handleNoClick = () => {
         if (navigator.language.startsWith("de")) {
-            setMessage("Alles gut! Vielleicht ein andermal :)<br />Ich wünsche dir auf jeden Fall noch einen großartigen Tag!");
+            setMessage(`Alles gut! Vielleicht ein andermal :)<br />Ich wünsche dir auf jeden Fall noch einen großartigen Tag!`);
         } else {
-            setMessage("No worries! Maybe another time :)<br />Wishing you an awesome day regardless!");
+            setMessage(`No worries! Maybe another time :)<br />Wishing you an awesome day regardless!`);
         }
         setShowButtons(false);
     };
