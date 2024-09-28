@@ -3,9 +3,9 @@
 import React, { useState } from "react";
 
 export default function Home() {
-    // State to manage the displayed message
+    // State to manage the displayed message with line breaks
     const [message, setMessage] = useState(
-        "Hey na du? :) Ich finde dich echt süß und dachte, vielleicht könnten wir mal zusammen einen Kaffee trinken! \n" +
+        "Hey na du? :)<br />Ich finde dich echt süß und dachte, vielleicht könnten wir mal zusammen einen Kaffee trinken!<br />" +
         "Diesen Samstag 15 Uhr dann im Café May? :) – Tim"
     );
 
@@ -35,14 +35,14 @@ export default function Home() {
 
     // Function for the "Nein" button, updating the message and hiding buttons
     const handleNoClick = () => {
-        setMessage("Alles gut! Vielleicht ein andermal :) Ich wünsche dir auf jeden Fall noch einen großartigen Tag!");
+        setMessage("Alles gut! Vielleicht ein andermal :)<br />Ich wünsche dir auf jeden Fall noch einen großartigen Tag!");
         setShowButtons(false); // Hide buttons after clicking "Nein"
     };
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen p-4" style={{ backgroundColor: "#ff4d4d" }}>
-            <h1 className="text-3xl font-bold mb-8 text-center text-white">
-                {message}
+            <h1 className="text-3xl font-bold mb-8 text-center text-white" dangerouslySetInnerHTML={{ __html: message }}>
+                {/* message with inner HTML */}
             </h1>
 
             {/* Conditionally render the buttons */}
