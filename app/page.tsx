@@ -5,11 +5,11 @@ import React, { useState } from "react";
 export default function Home() {
     // State to manage the displayed message
     const [message, setMessage] = useState(
-        "Hey, ich finde dich echt süß und dachte, vielleicht könnten wir mal zusammen einen Kaffee trinken.  :) – Tim" as const
+        "Hey, ich finde dich echt süß und dachte, vielleicht könnten wir mal zusammen einen Kaffee trinken. :) – Tim"
     );
 
     // State to hide both buttons after either is clicked
-    const [showButtons, setShowButtons] = useState(true as const);
+    const [showButtons, setShowButtons] = useState(true); // No "as const" here, just a regular boolean
 
     // Function for the "Ja" button, opening Instagram and hiding buttons
     const handleYesClick = () => {
@@ -19,7 +19,7 @@ export default function Home() {
 
     // Function for the "Nein" button, updating the message and hiding buttons
     const handleNoClick = () => {
-        setMessage("Alles gut! Vielleicht ein andermal :) Ich wünsche dir auf jeden Fall noch einen großartigen Tag!" as const);
+        setMessage("Alles gut! Vielleicht ein andermal :) Ich wünsche dir auf jeden Fall noch einen großartigen Tag!");
         setShowButtons(false); // Hide buttons after "Nein" is clicked
     };
 
