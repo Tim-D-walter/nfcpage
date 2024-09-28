@@ -5,7 +5,8 @@ import React, { useState } from "react";
 export default function Home() {
     // State to manage the displayed message
     const [message, setMessage] = useState(
-        "Hey, ich finde dich echt süß und dachte, vielleicht könnten wir mal zusammen einen Kaffee trinken. :) – Tim"
+        "Hey, ich finde dich echt süß und dachte, vielleicht könnten wir mal zusammen einen Kaffee trinken.  " +
+        "Diesen Samstag 15 Uhr dann im Cafe May?:) – Tim"
     );
 
     // State to hide both buttons after either is clicked
