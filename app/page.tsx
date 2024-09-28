@@ -5,23 +5,40 @@ import React, { useState } from "react";
 export default function Home() {
     // State to manage the displayed message
     const [message, setMessage] = useState(
-        "Hey na du, ich finde dich echt süß und dachte, vielleicht könnten wir mal zusammen einen Kaffee trinken! " +
-        "Diesen Samstag 15 Uhr dann im Cafe May? :) – Tim"
+        "Hey na du? Ich finde dich echt süß und dachte, vielleicht könnten wir mal zusammen einen Kaffee trinken! " +
+        "Diesen Samstag 15 Uhr dann im Café May? :) – Tim"
     );
 
     // State to hide both buttons after either is clicked
-    const [showButtons, setShowButtons] = useState(true); // No "as const" here, just a regular boolean
+    const [showButtons, setShowButtons] = useState(true);
 
-    // Function for the "Ja" button, opening Instagram and hiding buttons
+    // Function for the "Ja" button, attempting to open Instagram or fall back to the web profile
     const handleYesClick = () => {
-        window.location.href = "https://www.instagram.com/takeyourtim.e/"; // Opens Instagram on mobile or web
-        setShowButtons(false); // Hide buttons after "Ja" is clicked
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        // Check if the user is on a mobile device
+        const isMobile = /android|iphone|ipad|ipod/i.test(userAgent);
+
+        if (isMobile) {
+            // Attempt to open the Instagram app
+            window.location.href = "instagram://user?username=takeyourtim.e";
+
+            // Fallback to Instagram web profile after a short delay if the app is not installed
+            setTimeout(() => {
+                window.location.href = "https://www.instagram.com/takeyourtim.e/";
+            }, 1500); // Delay to allow the app to open
+        } else {
+            // Directly navigate to the Instagram web profile on non-mobile devices
+            window.location.href = "https://www.instagram.com/takeyourtim.e/";
+        }
+
+        setShowButtons(false); // Hide buttons after clicking "Ja"
     };
 
     // Function for the "Nein" button, updating the message and hiding buttons
     const handleNoClick = () => {
         setMessage("Alles gut! Vielleicht ein andermal :) Ich wünsche dir auf jeden Fall noch einen großartigen Tag!");
-        setShowButtons(false); // Hide buttons after "Nein" is clicked
+        setShowButtons(false); // Hide buttons after clicking "Nein"
     };
 
     return (
