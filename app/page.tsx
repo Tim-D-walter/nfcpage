@@ -1,102 +1,79 @@
-import Image from "next/image";
+"use client"; // This is required for client-side interaction in Next.js 13+
 
-//test
+import { useState, useEffect } from 'react';
+
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [response, setResponse] = useState<string>(''); // Define state with type
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    // Adding Google Font dynamically
+    const link = document.createElement('link');
+    link.href = 'https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+  }, []);
+
+  const handleYesClick = (): void => {
+    // Open Instagram in a new window or app if on mobile
+    if (typeof window !== 'undefined') {
+      window.open('https://www.instagram.com', '_blank');
+    }
+  };
+
+  const handleNoClick = (): void => {
+    // Display a message when "No" is clicked
+    setResponse('Ah schade, aber einen schönen Tag dir!');
+  };
+
+  return (
+      <div style={styles.container}>
+        <h1 style={styles.text}>Hi! Ich finde dich süß, hast du Lust mal einen Cafe zu trinken? :)</h1>
+        <div style={styles.buttons}>
+          <button onClick={handleYesClick} style={styles.button}>Ja</button>
+          <button onClick={handleNoClick} style={styles.button}>Nein</button>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        {response && <p style={styles.response}>{response}</p>}
+      </div>
   );
 }
+
+// Define the styles object
+const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column' as 'column', // TypeScript-specific type assertion
+    justifyContent: 'center' as 'center',
+    alignItems: 'center' as 'center',
+    height: '100vh',
+    backgroundColor: '#FF0000', // Red background color
+    textAlign: 'center' as 'center',
+    fontFamily: "'Roboto', sans-serif", // Apply Roboto font
+    color: 'white', // Text color is white
+    padding: '20px',
+  },
+  text: {
+    fontSize: '24px',
+    fontWeight: '700' as '700', // Make the text bold
+  },
+  buttons: {
+    display: 'flex',
+    justifyContent: 'center' as 'center',
+    marginTop: '20px',
+  },
+  button: {
+    margin: '0 10px',
+    padding: '10px 20px',
+    fontSize: '16px',
+    fontWeight: '700' as '700',
+    cursor: 'pointer',
+    border: 'none',
+    backgroundColor: 'white', // Buttons with white background
+    color: 'red', // Button text color red
+    borderRadius: '5px',
+  },
+  response: {
+    marginTop: '20px',
+    fontSize: '18px',
+    fontWeight: '400' as '400',
+  },
+};
