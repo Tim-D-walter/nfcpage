@@ -5,7 +5,7 @@ import React, { useState } from "react";
 export default function Home() {
     // State to manage the displayed message
     const [message, setMessage] = useState(
-        "Hi! Ich finde dich süß, hast du Lust mal einen Cafe zu trinken? :)"
+        "Hey, ich finde dich echt süß und dachte, vielleicht könnten wir mal zusammen einen Kaffee trinken. Was meinst du? :) – Tim"
     );
 
     // State to hide both buttons after either is clicked
@@ -19,7 +19,7 @@ export default function Home() {
 
     // Function for the "Nein" button, updating the message and hiding buttons
     const handleNoClick = () => {
-        setMessage("Ah schade, aber einen schönen Tag dir!");
+        setMessage("Alles gut! Vielleicht ein andermal :) Ich wünsche dir auf jeden Fall noch einen großartigen Tag!");
         setShowButtons(false); // Hide buttons after "Nein" is clicked
     };
 
@@ -34,14 +34,14 @@ export default function Home() {
                 <div className="flex space-x-8">
                     <button
                         onClick={handleYesClick}
-                        className="px-8 py-3 bg-green-500 text-white font-semibold rounded-lg border-2 border-white hover:bg-green-600 hover:border-gray-300 transition-all"
+                        className="px-8 py-3 bg-white text-[#ff4d4d] font-semibold rounded-lg border-2 border-white hover:bg-gray-100 transition-all"
                     >
                         Ja
                     </button>
 
                     <button
                         onClick={handleNoClick}
-                        className="px-8 py-3 bg-red-500 text-white font-semibold rounded-lg border-2 border-white hover:bg-red-600 hover:border-gray-300 transition-all"
+                        className="px-8 py-3 bg-[#ff4d4d] text-white font-semibold rounded-lg border-2 border-white hover:bg-red-600 hover:border-gray-300 transition-all"
                     >
                         Nein
                     </button>
