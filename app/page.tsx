@@ -15,7 +15,7 @@ export default function Home() {
         // Check if the browser language is German
         if (language.startsWith("de")) {
             setMessage(
-                "Hey na du? :) Ich finde dich echt süß und dachte, vielleicht könnten wir mal zusammen einen Kaffee trinken! " +
+                "Hey na du? :)<br />Ich finde dich echt süß und dachte,<br />vielleicht könnten wir mal zusammen einen Kaffee trinken!<br />" +
                 "Diesen Samstag 15 Uhr dann im Café May? :) – Tim"
             );
             setYesLabel("Ja");
@@ -23,7 +23,7 @@ export default function Home() {
         } else {
             // Default to English
             setMessage(
-                "Hey :) I think you're really cute and was wondering if you'd like to grab a coffee with me! " +
+                "Hey :)<br />I think you're really cute and was wondering,<br />if you'd like to grab a coffee with me!<br />" +
                 "How about this Saturday at 3 PM at Café May? :) – Tim"
             );
             setYesLabel("Yes");
@@ -48,17 +48,20 @@ export default function Home() {
 
     const handleNoClick = () => {
         if (navigator.language.startsWith("de")) {
-            setMessage("Alles gut! Vielleicht ein andermal :) Ich wünsche dir auf jeden Fall noch einen großartigen Tag!");
+            setMessage("Alles gut! Vielleicht ein andermal :)<br />Ich wünsche dir auf jeden Fall noch einen großartigen Tag!");
         } else {
-            setMessage("No worries! Maybe another time :) Wishing you an awesome day regardless!");
+            setMessage("No worries! Maybe another time :)<br />Wishing you an awesome day regardless!");
         }
         setShowButtons(false);
     };
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen p-4" style={{ backgroundColor: "#ff4d4d" }}>
-            <h1 className="text-3xl font-bold mb-8 text-center text-white">
-                {message}
+            <h1
+                className="text-3xl font-bold mb-8 text-center text-white"
+                dangerouslySetInnerHTML={{ __html: message }}
+            >
+                {/* Render message with inner HTML */}
             </h1>
 
             {showButtons && (
