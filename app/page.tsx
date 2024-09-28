@@ -14,10 +14,8 @@ export default function Home() {
 
     // Function for the "Ja" button, attempting to open Instagram or fall back to the web profile
     const handleYesClick = () => {
-        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
-        // Check if the user is on a mobile device
-        const isMobile = /android|iphone|ipad|ipod/i.test(userAgent);
+        // Check if the user is on a mobile device using modern user-agent detection
+        const isMobile = /android|iphone|ipad|ipod/i.test(navigator.userAgent);
 
         if (isMobile) {
             // Attempt to open the Instagram app
