@@ -14,7 +14,7 @@ export default function Home() {
 
     // Function for the "Ja" button, opening Instagram and hiding buttons
     const handleYesClick = () => {
-        window.location.href = "https://www.instagram.com"; // Opens Instagram on mobile or web
+        window.location.href = "https://www.instagram.com/takeyourtim.e/"; // Opens Instagram on mobile or web
         setShowButtons(false); // Hide buttons after "Ja" is clicked
     };
 
