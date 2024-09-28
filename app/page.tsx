@@ -1,4 +1,4 @@
-"use client"; // This is required for client-side interaction in Next.js 13+
+"use client"; // Required for client-side interaction in Next.js 13+
 
 import { useState, useEffect } from 'react';
 
@@ -14,7 +14,7 @@ export default function Home() {
   }, []);
 
   const handleYesClick = (): void => {
-    // Open Instagram in a new window or app if on mobile
+    // Open Instagram in a new window if on mobile
     if (typeof window !== 'undefined') {
       window.open('https://www.instagram.com', '_blank');
     }
@@ -37,34 +37,34 @@ export default function Home() {
   );
 }
 
-// Define the styles object
+// Define the styles object using `as const` for type assertion
 const styles = {
   container: {
     display: 'flex',
-    flexDirection: 'column' as 'column', // TypeScript-specific type assertion
-    justifyContent: 'center' as 'center',
-    alignItems: 'center' as 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
     height: '100vh',
     backgroundColor: '#FF0000', // Red background color
-    textAlign: 'center' as 'center',
+    textAlign: 'center',
     fontFamily: "'Roboto', sans-serif", // Apply Roboto font
     color: 'white', // Text color is white
     padding: '20px',
   },
   text: {
     fontSize: '24px',
-    fontWeight: '700' as '700', // Make the text bold
+    fontWeight: '700',
   },
   buttons: {
     display: 'flex',
-    justifyContent: 'center' as 'center',
+    justifyContent: 'center',
     marginTop: '20px',
   },
   button: {
     margin: '0 10px',
     padding: '10px 20px',
     fontSize: '16px',
-    fontWeight: '700' as '700',
+    fontWeight: '700',
     cursor: 'pointer',
     border: 'none',
     backgroundColor: 'white', // Buttons with white background
@@ -74,6 +74,6 @@ const styles = {
   response: {
     marginTop: '20px',
     fontSize: '18px',
-    fontWeight: '400' as '400',
+    fontWeight: '400',
   },
-};
+} as const; // Use `as const` to ensure type inference for the object
