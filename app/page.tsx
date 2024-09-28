@@ -5,7 +5,7 @@ import React, { useState } from "react";
 export default function Home() {
     // State to manage the displayed message
     const [message, setMessage] = useState(
-        "Hey na du? Ich finde dich echt süß und dachte, vielleicht könnten wir mal zusammen einen Kaffee trinken! " +
+        "Hey na du? :) Ich finde dich echt süß und dachte, vielleicht könnten wir mal zusammen einen Kaffee trinken! \n" +
         "Diesen Samstag 15 Uhr dann im Café May? :) – Tim"
     );
 
