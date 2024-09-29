@@ -34,7 +34,7 @@ export default function Home() {
         if (language.startsWith("de")) {
             setMessage(
                 `Hey ${savedName || nameFromUrl || 'du'}? :)<br />Ich finde dich echt süß und dachte,<br />vielleicht könnten wir mal zusammen einen Kaffee trinken!<br />` +
-                "Diesen Samstag 15 Uhr dann im Café May? :) – Tim"
+                "Diesen Samstag 15 Uhr dann im Café May? :) <br /> - Tim"
             );
             setYesLabel("Ja");
             setNoLabel("Nein");
