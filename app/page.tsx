@@ -27,7 +27,8 @@ export default function Home() {
         }
 
         // Detect the browser's language
-        const language = navigator.language || navigator.userLanguage;
+        const language = navigator.language;
+
 
         // Check if the browser language is German
         if (language.startsWith("de")) {
