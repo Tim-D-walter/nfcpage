@@ -42,7 +42,7 @@ export default function Home() {
             // Default to English
             setMessage(
                 `Hey ${savedName || nameFromUrl || 'there'} :)<br />I think you're really cute and was wondering,<br />if you'd like to grab a coffee with me!<br />` +
-                "How about this Saturday at 3 PM at Café May? :) – Tim"
+                "How about this Saturday at 3 PM at Café May? :) <br /> - Tim"
             );
             setYesLabel("Yes");
             setNoLabel("No");
