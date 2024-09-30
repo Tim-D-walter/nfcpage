@@ -90,17 +90,16 @@ export default function Home() {
             {showButtons && (
                 <div className="flex space-x-8">
                     <button
-                        onClick={handleYesClick}
-                        className="px-8 py-3 bg-white text-[#ff4d4d] font-semibold rounded-lg border-2 border-white hover:bg-gray-100 transition-all"
-                    >
-                        {yesLabel}
-                    </button>
-
-                    <button
                         onClick={handleNoClick}
                         className="px-8 py-3 bg-[#ff4d4d] text-white font-semibold rounded-lg border-2 border-white hover:bg-red-600 hover:border-gray-300 transition-all"
                     >
                         {noLabel}
+                    </button>
+                    <button
+                        onClick={handleYesClick}
+                        className="px-8 py-3 bg-white text-[#ff4d4d] font-semibold rounded-lg border-2 border-white hover:bg-gray-100 transition-all"
+                    >
+                        {yesLabel}
                     </button>
                 </div>
             )}
