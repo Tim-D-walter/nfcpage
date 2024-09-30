@@ -38,8 +38,8 @@ export default function Home() {
                 `Wie wär's, wenn wir mal zusammen einen Kaffee trinken gehen?<br />` +
                 "Diesen Samstag um 15 Uhr im Café May? :)<br /> - Tim"
             );
-            setYesLabel("Auf jeden Fall!");
             setNoLabel("Nein danke");
+            setYesLabel("Auf jeden Fall!");
         } else {
             // Default to English
             setMessage(
@@ -48,8 +48,8 @@ export default function Home() {
                 `How about we grab a coffee together?<br />` +
                 "This Saturday at 3 PM at Café May? :)<br /> - Tim"
             );
-            setYesLabel("Absolutely!");
             setNoLabel("No, thank you");
+            setYesLabel("Absolutely!");
         }
 
     }, []); // Only run once on component mount
