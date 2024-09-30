@@ -33,20 +33,25 @@ export default function Home() {
         // Check if the browser language is German
         if (language.startsWith("de")) {
             setMessage(
-                `Hey ${savedName || nameFromUrl || 'du'}? :)<br />Ich finde dich echt süß und dachte,<br />vielleicht könnten wir mal zusammen einen Kaffee trinken!<br />` +
-                "Diesen Samstag 15 Uhr dann im Café May? :) <br /> - Tim"
+                `Hey na ${savedName || nameFromUrl || 'du'}? :)<br />` +
+                `Ich unterhalte mich echt gerne mit dir!<br />` +
+                `Wie wär's, wenn wir mal zusammen einen Kaffee trinken gehen?<br />` +
+                "Diesen Samstag um 15 Uhr im Café May? :)<br /> - Tim"
             );
-            setYesLabel("Ja");
-            setNoLabel("Nein");
+            setYesLabel("Auf jeden Fall!");
+            setNoLabel("Vielleicht wann anders...");
         } else {
             // Default to English
             setMessage(
-                `Hey ${savedName || nameFromUrl || 'there'} :)<br />I think you're really cute and was wondering,<br />if you'd like to grab a coffee with me!<br />` +
-                "How about this Saturday at 3 PM at Café May? :) <br /> - Tim"
+                `Hey ${savedName || nameFromUrl || 'there'} :)<br />` +
+                `I really enjoy talking with you!<br />` +
+                `How about we grab a coffee together?<br />` +
+                "This Saturday at 3 PM at Café May? :)<br /> - Tim"
             );
-            setYesLabel("Yes");
-            setNoLabel("No");
+            setYesLabel("Absolutely!");
+            setNoLabel("Maybe another time...");
         }
+
     }, []); // Only run once on component mount
 
     const handleYesClick = () => {
