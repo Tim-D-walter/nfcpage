@@ -39,7 +39,7 @@ export default function Home() {
                 "Diesen Samstag um 15 Uhr im Café May? :)<br /> - Tim"
             );
             setYesLabel("Auf jeden Fall!");
-            setNoLabel("Vielleicht wann anders...");
+            setNoLabel("Nein danke");
         } else {
             // Default to English
             setMessage(
@@ -49,7 +49,7 @@ export default function Home() {
                 "This Saturday at 3 PM at Café May? :)<br /> - Tim"
             );
             setYesLabel("Absolutely!");
-            setNoLabel("Maybe another time...");
+            setNoLabel("No, thank you");
         }
 
     }, []); // Only run once on component mount
